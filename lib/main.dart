@@ -123,25 +123,29 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          if (_counter != 0)
-            FloatingActionButton(
-              onPressed: _decrementCounter,
-              tooltip: 'Decrement',
-              heroTag: null,
-              child: const Icon(Icons.remove),
+      floatingActionButton: Container(
+        padding: const EdgeInsets.only(left:30),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Visibility(
+              visible: _counter == 0 ? false : true,
+              child: FloatingActionButton(
+                onPressed: _decrementCounter,
+                tooltip: 'Decrement',
+                heroTag: null,
+                child: const Icon(Icons.remove),
+              ),
             ),
-          FloatingActionButton(
-            onPressed: _incrementCounter,
-            tooltip: 'Increment',
-            heroTag: null,
-            child: const Icon(Icons.add),
-          ),
-        ],
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+            FloatingActionButton(
+              onPressed: _incrementCounter,
+              tooltip: 'Increment',
+              heroTag: null,
+              child: const Icon(Icons.add),
+            ),
+          ],
+        ),
+        )
     );
   }
 }

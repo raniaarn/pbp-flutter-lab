@@ -2,16 +2,22 @@
 ## PBP B
 
 ## 1. Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget dan jelaskan perbedaan dari keduanya.
-Stateful widget: jika widget bisa berubah saat user berinteraksi dengan widget tersebut(memicu adanya variable atau nilai baru yang didapat). Stateful memiliki state yang berubah-ubah (dinamis, mutable saat runtime ketika user berinteraksi). 
+Stateful widget: jika widget bisa berubah saat user berinteraksi dengan widget tersebut(memicu adanya variable atau nilai baru yang didapat). Stateful memiliki state yang berubah-ubah (dinamis, mutable saat runtime ketika user berinteraksi). Contoh checkbox, radiobutton, dll.
 
-Stateless Widget: jika widget tidak akan berubah. Hanya akan memiliki final property yang didefine di awal, dan bakal jadi satu-satunya yang muncul di user. (statis, immutable). Berguna jika tidak bergantung dengan apapun.
+Stateless Widget: jika widget tidak akan berubah. Hanya akan memiliki final property yang didefine di awal, dan bakal jadi satu-satunya yang muncul di user. (statis, immutable). Berguna jika tidak bergantung dengan apapun. COntoh icon, layout, dll.
 <br>
 
 ## 2. Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+- Container
+untuk menaruh widget lain dan memposisikannya sesuai kemauan kita (mengatur padding dll)
+- Row
+seperti flex, sebagai layout secara horizontal untuk membuat child di dalamnya sejajar
+- Visibility
+untuk visibilitas, jika visible=true maka widget didalamnya akan terlihat
 - Text
 untuk menampilkan sebuah text/string. Text juga memimiliki argument kedua yang bersifat optional untuk memanipulasi tampilan seperti warna, ukuran, posisi, dll
 - FloatingActionButton
-sebuah circular icon button. berguna untuk mengaktifkan suatu fungsi (jika ditekan, akan memanggil fungsi)
+sebuah circular icon button. berguna untuk mengaktifkan suatu fungsi (jika ditekan, akan memanggil fungsi) contohnya disini adalah dihubungkan dengan fungsi increment untuk menambah _counter dan decrement untuk menguranginya
 
 <br>
 
@@ -32,7 +38,7 @@ final dan const digunakan jika nilai dari variable tersebut tidak akan diubah ke
  
 ## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
 1. Membuat program flutter baru dengan nama counter_7
-ini dilakukan dengan cara menjalankan command ` flutter createapp counter_7 `
+ini dilakukan dengan cara menjalankan command ` flutter create counter_7 `
 
 2. Mengubah tampilan program
 menambahkan button - di sisi kiri, mengganti tulisan flutter demo menjadi program counter, mengganti tulisan "you have clicked the button..." menjadi genap/ganjil (jika genap berwarna merah, jika ganjil berwarna biru) cara mengubah color dengan atribut style:
@@ -54,6 +60,7 @@ dilakukan dengan fungsi _decrementCounter() berjenis void, lakukan decrement han
     }
   }
 ```
+lalu tambahkan floatingActionButton didalam widget Row agar sejajar dengan floatingActionButton yang increment.
 
 5. Jika counter ganjil atau genap menampilkan teks indikator yang sesuai
 menggunakan fungsi _text yang mereturn sebuah string sesuai ketentuan, fungsi ini akan dipanggil di child untuk ditampilkan
