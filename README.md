@@ -8,14 +8,22 @@ Stateless Widget: jika widget tidak akan berubah. Hanya akan memiliki final prop
 <br>
 
 ## 2. Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+- Center
+untuk meletakkan child widgetnya di tengah
+- Scaffold
+untuk mengimplementasikan layout design structure umum. DI dalamnya dapat menyajikan widget lain yang disebutkan di bawah ini. (Appbar, FloatingActionButton, dll)
+- Appbar
+widget yang mengandung toolbar dalam aplikasi flutter. AppBar pada umumnya menampilan seperti daftar menu, judul aplikasi ataupun tombol-tombol aksi contohnya tombol pencarian, notifikasi dll.
 - Container
 untuk menaruh widget lain dan memposisikannya sesuai kemauan kita (mengatur padding dll)
-- Row
-seperti flex, sebagai layout secara horizontal untuk membuat child di dalamnya sejajar
+- Row, Column
+seperti flex, sebagai layout secara horizontal (Row) dan vertikal (Column) untuk membuat child di dalamnya sejajar
 - Visibility
 untuk visibilitas, jika visible=true maka widget didalamnya akan terlihat
 - Text
 untuk menampilkan sebuah text/string. Text juga memimiliki argument kedua yang bersifat optional untuk memanipulasi tampilan seperti warna, ukuran, posisi, dll
+- TextStyle
+
 - FloatingActionButton
 sebuah circular icon button. berguna untuk mengaktifkan suatu fungsi (jika ditekan, akan memanggil fungsi) contohnya disini adalah dihubungkan dengan fungsi increment untuk menambah _counter dan decrement untuk menguranginya
 
