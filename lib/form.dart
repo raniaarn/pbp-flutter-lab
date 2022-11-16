@@ -13,9 +13,10 @@ class MyFormPage extends StatefulWidget {
 class _MyFormPageState extends State<MyFormPage> {
   final _formKey = GlobalKey<FormState>();
   String judul = "";
-  int nominal = 0;
-  String pilihJenis = "Pilih Jenis";
-  List<String> listJenis = ["Pilih Jenis", "Pemasukan", "Pengeluaran"];
+  int? nominal = 0;
+  String? pilihJenis;
+  DateTime? date;
+  List<String> listJenis = ["Pemasukan", "Pengeluaran"];
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +30,8 @@ class _MyFormPageState extends State<MyFormPage> {
         key: _formKey,
         child: SingleChildScrollView(
           child: Container(
-            margin: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            padding: const EdgeInsets.all(20.0),
+            margin: const EdgeInsets.all(1),
+            padding: const EdgeInsets.all(10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -44,7 +41,7 @@ class _MyFormPageState extends State<MyFormPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     decoration: InputDecoration(
-                      hintText: "Contoh: Sate Pacil",
+                      hintText: "Contoh: Beli Sate Pacil",
                       labelText: "Judul",
                       // Menambahkan circular border agar lebih rapi
                       border: OutlineInputBorder(
@@ -82,7 +79,7 @@ class _MyFormPageState extends State<MyFormPage> {
                       FilteringTextInputFormatter.digitsOnly
                     ], // Only numbers
                     decoration: InputDecoration(
-                      hintText: "Contoh: 20000",
+                      hintText: "Contoh: 15000",
                       labelText: "Nominal",
                       // Menambahkan circular border agar lebih rapi
                       border: OutlineInputBorder(
@@ -92,7 +89,7 @@ class _MyFormPageState extends State<MyFormPage> {
                     // Menambahkan behavior saat nama diketik
                     onChanged: (String? value) {
                       setState(() {
-                        nominal = int.parse(value!);
+                        nominal = int.tryParse(value!);
                       });
                     },
                     // Menambahkan behavior saat data disimpan
@@ -113,47 +110,80 @@ class _MyFormPageState extends State<MyFormPage> {
                     },
                   ),
                 ),
-                ListTile(
-                  trailing: DropdownButton(
-                    value: pilihJenis,
-                    icon: const Icon(Icons.keyboard_arrow_down),
-                    items: listJenis.map((String items) {
-                      return DropdownMenuItem(
-                        value: items,
-                        child: Text(items),
-                      );
-                    }).toList(),
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        pilihJenis = newValue!;
-                      });
-                    },
-                  ),
-                ),
-                TextButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.blue),
-                  ),
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
-                      // tambahkan data ke list
-                      ListBudget.data.add(Budget(judul, nominal, pilihJenis));
-
-                      // snackbar menampilkan pesan
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Data berhasil disimpan!'),
+                Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextButton(
+                      onPressed: () {
+                        showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime(2000),
+                                lastDate: DateTime(2050))
+                            .then((newDate) {
+                          setState(() {
+                            date = newDate;
+                          });
+                        });
+                      },
+                      child: Text(date == null
+                          // jika blm diisi date
+                          ? "Pilih tanggal"
+                          // jika sudah
+                          : "${date!.day}/${date!.month}/${date!.year}"),
+                    )),
+                Center(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        ListTile(
+                          trailing: DropdownButton(
+                            hint: Text("Pilih Jenis"),
+                            value: pilihJenis,
+                            icon: const Icon(Icons.keyboard_arrow_down),
+                            items: listJenis.map((String items) {
+                              return DropdownMenuItem(
+                                value: items,
+                                child: Text(items),
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                pilihJenis = newValue!;
+                              });
+                            },
+                          ),
                         ),
-                      );
+                      ]),
+                ),
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: TextButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.blue),
+                    ),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
+                        // tambahkan data ke list
+                        ListBudget.budgets
+                            .add(Budget(judul, nominal!, pilihJenis!, date!));
 
-                      // Mengosongkan form
-                      _formKey.currentState!.reset();
-                    }
-                  },
-                  child: const Text(
-                    "Simpan",
-                    style: TextStyle(color: Colors.white),
+                        // snackbar menampilkan pesan
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Data berhasil disimpan!'),
+                          ),
+                        );
+
+                        // Mengosongkan form
+                        _formKey.currentState!.reset();
+                        date = null;
+                      }
+                    },
+                    child: const Text(
+                      "Simpan",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
               ],

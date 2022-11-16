@@ -1,6 +1,8 @@
 # counter_7 - Rania Maharani Narendra - 2106650222
 ## PBP B
 
+# TUGAS 7
+
 ## 1. Jelaskan apa yang dimaksud dengan stateless widget dan stateful widget dan jelaskan perbedaan dari keduanya.
 Stateful widget: jika widget bisa berubah saat user berinteraksi dengan widget tersebut(memicu adanya variable atau nilai baru yang didapat). Stateful memiliki state yang berubah-ubah (dinamis, mutable saat runtime ketika user berinteraksi). Contoh checkbox, radiobutton, dll.
 
@@ -84,3 +86,45 @@ menggunakan fungsi _text yang mereturn sebuah string sesuai ketentuan, fungsi in
 
 6. angka 0 dianggap genap
 untuk identify suatu angka genap atau ganjil hanya perlu mengecek dengan `_counter%2==0` jika genap, sebaliknya maka ganjil
+
+<hr>
+
+
+<br>
+<br>
+
+# TUGAS 8
+## 1. Jelaskan perbedaan Navigator.push dan Navigator.pushReplacement.
+#### Navigator.push
+menambahkan rute halaman ke tumpukan stack saat ini (jadi tidak hilang halaman yang sebelumnya)
+
+### Navigator.pushReplacement
+menambahkan rute dengan menggantikan halaman saat ini dengan halaman baru tersebut (replace)
+
+## 2. Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+- card = untuk membuat card
+- TextFormField = input field berupa text untuk form
+- DropdownButton = membuat dropdown button berisi list
+- ListTile = menampilkan sebuah list
+- Drawer = menampilkan menu yang tersembunyi pada sisi kanan/kiri
+- Align = untuk set alignment childnya
+
+## 3. Sebutkan jenis-jenis event yang ada pada Flutter (contoh: onPressed).
+- onPressed = event yang terjadi ketika user menekan suatu widget
+- onChanged = event yang terjadi ketika user melakukan perubahan pada TextField value
+
+## 4. Jelaskan bagaimana cara kerja Navigator dalam "mengganti" halaman dari aplikasi Flutter.
+Navigator menggunakan stack berisi halaman-halaman/routes. Jadi tiap dilakukan push suatu halaman maka halaman tersebut akan masuk ke dalam stack (jadi top of stack) dan ditampilkan.
+
+## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+### <strong>menambahkan drawer menu pada app yang dibuat</strong>
+dengan membuat file drawer.dart yang mengembalikan widget Drawer yang berisi routing ke halaman lainnya (counter_7, Tambah Budget, Data Budget)
+### <strong>Menambahkan Halaman form</strong>
+menambahkan form.dart yanf berisi field-field untuk meminta input kepada user. Judul dengan type String, kemudian nominal dengan type int dimana judul dan nominal menggunakan `TextFormField`. String jenis menggunakan `DropDownButton`yang berisi list pilihan
+### <strong>Menambahkan button untuk menyimpan budget</strong>
+pada `main.dart`, membuat class/model `Budget` berisi atribut2 yang disebutkan sebelumnya berisi constructor yang akan membuat object tiap dipanggil. Kemudian membuat class ListBudget untuk menyimpan data2 yang nantinya bisa ditampilkan.
+
+kemudian pada `form.dart` menambahkan button yang menggunakan onPressed (jika ditekan) akan memvalidasi input form dan jika benar maka tambahkan data (buat object budget baru dengan input) ke list (ListBudget yang isinya sebuah list (budgets))  kemudian reset input.
+
+### <strong>Menambahkan halaman data budget</strong>
+halaman baru di `data.dart` menampilkan semua judul, nominal, dan tipe budget menggunakan cards (dengan iterasi static list yang disimpan sebelumnya)
