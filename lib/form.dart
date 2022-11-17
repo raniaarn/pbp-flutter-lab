@@ -132,7 +132,7 @@ class _MyFormPageState extends State<MyFormPage> {
                             setState(() {
                               date = newDate;
                               if (date == null) {
-                                dateinput.text = "Pilih tanggal";
+                                dateinput.text = "";
                               } else {
                                 dateinput.text =
                                     "${date!.day}/${date!.month}/${date!.year}";
