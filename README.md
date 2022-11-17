@@ -119,10 +119,12 @@ Navigator menggunakan stack berisi halaman-halaman/routes. Jadi tiap dilakukan p
 ## 5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
 ### <strong>menambahkan drawer menu pada app yang dibuat</strong>
 dengan membuat file drawer.dart yang mengembalikan widget Drawer yang berisi routing ke halaman lainnya (counter_7, Tambah Budget, Data Budget)
+
 ### <strong>Menambahkan Halaman form</strong>
-menambahkan form.dart yanf berisi field-field untuk meminta input kepada user. Judul dengan type String, kemudian nominal dengan type int dimana judul dan nominal menggunakan `TextFormField`. String jenis menggunakan `DropDownButton`yang berisi list pilihan
+menambahkan form.dart yang berisi field-field untuk meminta input kepada user. Judul dengan type String, kemudian nominal dengan type int dimana judul dan nominal menggunakan `TextFormField`. String jenis menggunakan `DropDownButton`yang berisi list pilihan
+
 ### <strong>Menambahkan button untuk menyimpan budget</strong>
-pada `main.dart`, membuat class/model `Budget` berisi atribut2 yang disebutkan sebelumnya berisi constructor yang akan membuat object tiap dipanggil. Kemudian membuat class ListBudget untuk menyimpan data2 yang nantinya bisa ditampilkan.
+pada `main.dart`, membuat class/model `Budget` berisi atribut2 yang disebutkan sebelumnya. Pada class ini juga berisi constructor yang akan membuat object tiap dipanggil. Kemudian membuat class ListBudget untuk menyimpan data2 yang nantinya bisa ditampilkan.
 
 kemudian pada `form.dart` menambahkan button yang menggunakan onPressed (jika ditekan) akan memvalidasi input form dan jika benar maka tambahkan data (buat object budget baru dengan input) ke list (ListBudget yang isinya sebuah list (budgets))  kemudian reset input.
 
