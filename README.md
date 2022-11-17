@@ -110,8 +110,9 @@ menambahkan rute dengan menggantikan halaman saat ini dengan halaman baru terseb
 - Align = untuk set alignment childnya
 
 ## 3. Sebutkan jenis-jenis event yang ada pada Flutter (contoh: onPressed).
-- onPressed = event yang terjadi ketika user menekan suatu widget
+- onPressed = event yang terjadi ketika user menekan suatu button
 - onChanged = event yang terjadi ketika user melakukan perubahan pada TextField value
+- onTap = event yang terjadi ketika user menekan suatu widget 
 
 ## 4. Jelaskan bagaimana cara kerja Navigator dalam "mengganti" halaman dari aplikasi Flutter.
 Navigator menggunakan stack berisi halaman-halaman/routes. Jadi tiap dilakukan push suatu halaman maka halaman tersebut akan masuk ke dalam stack (jadi top of stack) dan ditampilkan.
