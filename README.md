@@ -103,11 +103,17 @@ menambahkan rute dengan menggantikan halaman saat ini dengan halaman baru terseb
 
 ## 2. Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
 - card = untuk membuat card
-- TextFormField = input field berupa text untuk form
+- TextFormField = input field untuk text dan butuh validator
 - DropdownButton = membuat dropdown button berisi list
 - ListTile = menampilkan sebuah list
 - Drawer = menampilkan menu yang tersembunyi pada sisi kanan/kiri
 - Align = untuk set alignment childnya
+- InputDecoration = menampilkan elemen desain visual untuk text field
+- OutlineInputBorder = membuat border untuk input decorator
+- Icon = membuat sebuah icon
+- DropdownMenuItem = membuat item pada dropdown menu
+- TextField = membuat sebuah simple input field untuk text
+-  
 
 ## 3. Sebutkan jenis-jenis event yang ada pada Flutter (contoh: onPressed).
 - onPressed = event yang terjadi ketika user menekan suatu button
