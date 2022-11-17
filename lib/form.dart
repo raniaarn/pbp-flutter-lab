@@ -33,7 +33,7 @@ class _MyFormPageState extends State<MyFormPage> {
             margin: const EdgeInsets.all(1),
             padding: const EdgeInsets.all(10),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // field judul
                 Padding(
@@ -131,30 +131,22 @@ class _MyFormPageState extends State<MyFormPage> {
                           // jika sudah
                           : "${date!.day}/${date!.month}/${date!.year}"),
                     )),
-                Center(
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        ListTile(
-                          trailing: DropdownButton(
-                            hint: Text("Pilih Jenis"),
-                            value: pilihJenis,
-                            icon: const Icon(Icons.keyboard_arrow_down),
-                            items: listJenis.map((String items) {
-                              return DropdownMenuItem(
-                                value: items,
-                                child: Text(items),
-                              );
-                            }).toList(),
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                pilihJenis = newValue!;
-                              });
-                            },
-                          ),
-                        ),
-                      ]),
-                ),
+                    DropdownButton(
+                      hint: Text("Pilih Jenis"),
+                      value: pilihJenis,
+                      icon: const Icon(Icons.keyboard_arrow_down),
+                      items: listJenis.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(items),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          pilihJenis = newValue!;
+                        });
+                      },
+                    ),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: TextButton(
