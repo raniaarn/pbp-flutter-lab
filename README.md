@@ -137,3 +137,38 @@ kemudian pada `form.dart` menambahkan button yang menggunakan onPressed (jika di
 
 ### <strong>Menambahkan halaman data budget</strong>
 halaman baru di `data.dart` menampilkan semua judul, nominal, dan tipe budget menggunakan cards (dengan iterasi static list yang disimpan sebelumnya)
+
+<br>
+<br>
+
+# TUGAS 9
+## 1. Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?
+Bisa dilakukan karena JSON adalah suatu object. Namun, dengan begitu (tidak membuat model dulu) tidak praktis dan tidak mudah digunakan karena model struktur data yang diambil tidak dapat ditentukan oleh kita sendiri, dengan membuat modelnya terlebih dahulu bisa menghindari kesalahan dan memudahkan kita.
+
+## 2. Sebutkan widget apa saja yang kamu pakai di proyek kali ini dan jelaskan fungsinya.
+- FutureBuilder: membuat widgets berdasarkan snapshot terakhir yang berinteraksi dengan suatu Future 
+- CircularProgressIndicator: Untuk menunjukkan suatu progress dengan sebuah lingkaran
+- Checkbox: untuk menampilkan sebuah input checkbox
+- Flexible: untuk mengontrol bagaimana row, column, dan flex akan mengisi space kosong yang ada
+- Sizedbox: box simple dengan ukuran yang bisa dispesifikasikan, sizedbox kosong akan memberikan ruang antar widgets
+- GestureDetector: untuk mendeteksi gesture dari user (ditargetkan ke suatu widget)
+- MaterialPageRoute: rute modal yang menggantikan seluruh layar dengan transisi tergantung platformnya
+
+## 3. Jelaskan mekanisme pengambilan data dari json hingga dapat ditampilkan pada Flutter.
+1. menambahkan dependensi http untuk pertukaran data melalui HTTP request seperti GET, POST, PUT, dll
+2. membuat model sesuai respons dari data json/web service yang akan diget
+3. membuat http request dengan dependesi http (method get)
+4. konversi object yang didapat dari json ke model yang dibuat sebelumnya
+5. menampilkan data dengan menggunakan FutureBuilder
+
+## 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas.
+- menambahkan tombol navigasi pada drawer ke halaman mywatchlist
+pada `drawer.dart` tambahkan ListTile baru yang mengarah ke page watchlist yang ada di file `watchlist_page.dart`
+- Membuat satu file dart yang berisi model mywatchlist.
+membuat file `watchlist.dart` dan memasukkannya ke folder model. Kemudian menggunakan [Quicktype](https://app.quicktype.io/) salin data json dari tugas 3 [mywatchlist](https://itemmate.herokuapp.com/mywatchlist/json/). kemudian salin hasil dari quicktype kembali ke file `watchlist.dart`
+- menampilkan judul dari setiap mywatchlist 
+membuat file `watchlist_page.dart` pada folder page. membuat stateful widget `WatchListPage` dimana di dalamnya melakukan pengambilan data dari URL json tugas 3 menggunakan method GET. Data ditampilkan dengan menggunakan FutureBuilder, tetapi hanya menampilkan judul dari tiap watchlist saja. dengan menggunakan ontap, arahkan ke halaman detail pada file `watchlist_detail.dart`
+- Menambahkan halaman detail untuk setiap mywatchlist yang ada pada daftar tersebut. Halaman ini menampilkan judul, release date, rating, review, dan status (sudah ditonton/belum).
+pada `watchlist_detail.dart` membuat stateless widget dan menampilkan data-data tersebut
+- Menambahkan tombol untuk kembali ke daftar mywatchlist
+tombol back dengan `Navigator.of(context).pop()` untuk kembali ke halaman sebelumnya
